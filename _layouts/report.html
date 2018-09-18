@@ -1,0 +1,76 @@
+---
+layout: default
+---
+{% assign meta=site.data.servers[page.server] %}
+{% assign results=site.data[page.server][0] %}
+
+<h2>Test Details</h2>
+<dl>
+  <dt>Server</dt><dd><a href='{{results.server}}'>{{results.server}}</a></dd>
+  <dt>Date run</dt><dd>{{results.date_time}}</dd>
+  <dt>Tests passed</dt><dd>{{results.total_tests_passed}}</dd>
+  <dt>Tests failed</dt><dd>{{results.total_tests_failed}}</dd>
+  <dt>Tests skipped</dt><dd>{{results.total_tests_skipped}}</dd>
+  {% if meta.github %}<dt>GitHub</dt><dd><a href="{{meta.github}}">{{meta.github}}</a></dd>{% endif %}
+</dl>
+
+<h2>Test Results</h2>
+{% for description in site.data.descriptions %}
+  <hr/>
+  <h3>{{description[1]}}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Result</th>
+        <th>Description</th>
+        <th>Response</th>
+        <th>Edge Cases</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for test in results.test_results %}
+    {% if test.parents contains description[0] %}
+      <tr>
+        <td>{{test.result}}</td>
+        <td>{{test.test_description}}</td>
+        <td>{{test.text}}</td>
+      {% if test.edge_cases.size > 0 %}
+        <td><dl>
+        {% for edge in test.edge_cases %}
+          <dt>Result: {{edge.result}}</dt>
+          <dd>API call: <code>{{edge.api}}</code></dd>
+        {% endfor %}
+        </dl>
+        </td>
+      {% else %}
+        <td>-</td>
+      {% endif %}
+      </tr>
+    {% endif %}
+  {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
+
+<!-- <h2>Test Results</h2>
+{% for description in site.data.descriptions %}
+  <hr/>
+  <h3>{{description[1]}}</h3>
+  {% for test in results.test_results %}
+    {% if test.parents contains description[0] %}
+      <h4>{{test.test_description}}</h4>
+      <dl><dt>Result</dt><dd>{{test.result}}</dd>
+      <dl><dt>Response</dt><dd>{{test.text}}</dd>
+      {% if test.edge_cases.size > 0 %}
+        <dl>Edge cases</dl>
+        <dd><dl>
+        {% for edge in test.edge_cases %}
+          <dt>Result: {{edge.result}}</dt>
+          <dd>API call: <code>{{edge.api}}</code></dd>
+        {% endfor %}
+        </dl>
+        </dd>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %} -->

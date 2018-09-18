@@ -1,0 +1,4 @@
+refget-server-perl:
+  name: Refget Reference Implementation
+  site: https://refget.herokuapp.com/
+  github: https://github.com/andrewyatz/refget-server-perl
