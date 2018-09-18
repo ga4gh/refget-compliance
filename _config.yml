@@ -18,7 +18,7 @@ email: security-notification@ga4gh.org
 description: >-
   Website for reporting the current compliance of implementations of the GA4GH
   standard refget.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/refget-compliance" # the subpath of your site, e.g. /blog
 url: ""
 
 # Build settings
