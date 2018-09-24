@@ -1,595 +1,424 @@
-[
-  {
-    "total_warnings": 1,
-    "total_tests_passed": 29,
-    "total_tests": 30,
-    "date_time": "2018-09-13 10:51:04.404426",
-    "server": "https://refget.herokuapp.com/",
-    "test_results": [
-      {
-        "warning": false,
-        "children": [
-          "test_info_implement_default",
-          "test_info_circular",
-          "test_info_algorithms",
-          "test_info_subsequence",
-          "test_info_api_version"
-        ],
-        "edge_cases": [],
-        "name": "test_info_implement",
-        "text": "Info endpoint implemented by the server",
-        "parents": [
-          "test_base_algorithm"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint returns 200 OK with appropriate headers"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_info_implement_default",
-        "text": "Info endpoint implemented with default encoding",
-        "parents": [
-          "test_info_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint returns 200 OK without headers"
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_metadata_query_circular_sequence",
-          "test_sequence_circular",
-          "test_sequence_circular_support_false_errors",
-          "test_sequence_circular_support_true_errors"
-        ],
-        "edge_cases": [],
-        "name": "test_info_circular",
-        "text": "circular key in info response object",
-        "parents": [
-          "test_info_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint has circular in the response object. If the key is present we update session_params['circular'] as per the value"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_query_circular_sequence",
-        "text": "Circular sequence metadata can be retrieved",
-        "parents": [
-          "test_metadata_implement",
-          "test_info_circular"
-        ],
-        "result": 1,
-        "test_description": "Test if metadata endpoint returns 200 using circular test sequence if the server supports circular sequences. Value stored in session_params. If not skip test and set skip text appropriately"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5374&end=5:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5374&end=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5380&end=25:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          }
-        ],
-        "name": "test_sequence_circular",
-        "text": "Circular sequence can be retrieved successfully passing all the edge cases",
-        "parents": [
-          "test_sequence_implement",
-          "test_info_circular"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server passes all the edge cases related to circular queries"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_sequence_circular_support_false_errors",
-        "text": "test_sequence_circular_support_false_errors is skipped because server supports circular sequences",
-        "parents": [
-          "test_sequence_implement",
-          "test_info_circular"
-        ],
-        "result": 0,
-        "test_description": "Test to check if server throws correct error codes on circular sequence query if server does not support circular sequences"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=220218&end=671"
-          }
-        ],
-        "name": "test_sequence_circular_support_true_errors",
-        "text": "Server is correctly throwing for error cases of circular sequences when server supports circular sequences",
-        "parents": [
-          "test_sequence_implement",
-          "test_info_circular"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server throws correct error codes on circular sequence query if server supports circular sequences"
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_metadata_query_by_trunc512",
-          "test_metadata_trunc512",
-          "test_sequence_query_by_trunc512"
-        ],
-        "edge_cases": [],
-        "name": "test_info_algorithms",
-        "text": "algorithms key in info response object",
-        "parents": [
-          "test_info_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint has algorithms in the response object. If the key is present we update session_params['trunc512'] as per the value"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_query_by_trunc512",
-        "text": "TRUNC512 algorithm is working in the server for metadata endpoint",
-        "parents": [
-          "test_metadata_implement",
-          "test_info_algorithms"
-        ],
-        "result": 1,
-        "test_description": "Test if metadata endpoint returns 200 using trunc512 with I test sequence if the server supports. Value stored in session_params. If not skip test and set skip text appropriately"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_trunc512",
-        "text": "trunc512 key in metadata response object",
-        "parents": [
-          "test_metadata_implement",
-          "test_info_algorithms"
-        ],
-        "result": 1,
-        "test_description": "Test if trunc512 in metadata response object. Skip if server does not support trunc512"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_sequence_query_by_trunc512",
-        "text": "TRUNC512 algorithm is working in the server for sequence endpoint",
-        "parents": [
-          "test_sequence_implement",
-          "test_info_algorithms"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 using I test sequence trunc512 and appropriate headers if the server supports trunc512"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_info_subsequence",
-        "text": "subsequence_limit key in info response object",
-        "parents": [
-          "test_info_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint has subsequence_limit in the response object. If the key is present we update session_params['subsequence_limit'] as per the value"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_info_api_version",
-        "text": "supported_api_versions key in info response object",
-        "parents": [
-          "test_info_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if info-endpoint has supported_api_versions in the response object."
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_metadata_implement_default",
-          "test_metadata_query_by_trunc512",
-          "test_metadata_query_circular_sequence",
-          "test_metadata_md5",
-          "test_metadata_trunc512",
-          "test_metadata_length",
-          "test_metadata_aliases",
-          "test_metadata_invalid_checksum_404_error",
-          "test_metadata_invalid_encoding_415_error"
-        ],
-        "edge_cases": [],
-        "name": "test_metadata_implement",
-        "text": "Metadata endpoint implemented by the server",
-        "parents": [
-          "test_base_algorithm"
-        ],
-        "result": 1,
-        "test_description": "Test if metadata endpoint returns 200 with appropriate headers using I test sequence"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_implement_default",
-        "text": "Metadata endpoint implemented with default encoding",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if metadata endpoint returns 200 without headers using I test sequence"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_md5",
-        "text": "md5 key in metadata response object",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if md5 in metadata response object"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_length",
-        "text": "length key in metadata response object",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if length in metadata response object"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_aliases",
-        "text": "aliases key in metadata response object",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if aliases in metadata response object"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_invalid_checksum_404_error",
-        "text": "Server is correctly sending 404 on invalid checksum",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if 404 on invalid checksum in metadata response"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_metadata_invalid_encoding_415_error",
-        "text": "Server is correctly sending 415 on invalid encoding",
-        "parents": [
-          "test_metadata_implement"
-        ],
-        "result": 1,
-        "test_description": "Test if 415 on invalid encoding in Accept header"
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_sequence_implement_default",
-          "test_sequence_start_end",
-          "test_sequence_range",
-          "test_sequence_query_by_trunc512",
-          "test_sequence_invalid_checksum_404_error",
-          "test_sequence_invalid_encoding_415_error",
-          "test_sequence_circular",
-          "test_sequence_circular_support_false_errors",
-          "test_sequence_circular_support_true_errors"
-        ],
-        "edge_cases": [],
-        "name": "test_sequence_implement",
-        "text": "Sequence endpoint implemented in the server",
-        "parents": [
-          "test_base_algorithm"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 using I test sequence and appropriate headers"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_sequence_implement_default",
-        "text": "Sequence endpoint implemented with default encoding",
-        "parents": [
-          "test_sequence_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 using I test sequence and no headers"
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_sequence_start_end_success_cases",
-          "test_sequence_start_end_errors"
-        ],
-        "edge_cases": [],
-        "name": "test_sequence_start_end",
-        "text": "Server supports start end query params",
-        "parents": [
-          "test_sequence_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 and appropriate text using I test sequence and start/end query params set to 10 and 20 respectively"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=10:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=20:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=11:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230208:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?end=5:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230217&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=0&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=1&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?end=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          }
-        ],
-        "name": "test_sequence_start_end_success_cases",
-        "text": "Server passed all the success edge cases with start end query params",
-        "parents": [
-          "test_sequence_start_end"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server passes all the edge cases related to success queries using start/end params"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=abc&end=20"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=-10&end=-29"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=abc"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=67&end=5387"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5375"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5386"
-          },
-          {
-            "result": 1,
-            "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5"
-          }
-        ],
-        "name": "test_sequence_start_end_errors",
-        "text": "server is correctly throwing errors for start-end error cases",
-        "parents": [
-          "test_sequence_start_end"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server passes all the edge cases related start-end error cases"
-      },
-      {
-        "warning": false,
-        "children": [
-          "test_sequence_range_success_cases",
-          "test_sequence_range_errors"
-        ],
-        "edge_cases": [],
-        "name": "test_sequence_range",
-        "text": "Server supports range header",
-        "parents": [
-          "test_sequence_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 and appropriate text using I test sequence and range header set to 10 and 19 respectively"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-19:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-999999:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-999999:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          },
-          {
-            "result": 1,
-            "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=230217-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
-          }
-        ],
-        "name": "test_sequence_range_success_cases",
-        "text": "Server passed all the success edge cases with range header query",
-        "parents": [
-          "test_sequence_range"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server passesall the edge cases related to range header success queries"
-      },
-      {
-        "warning": true,
-        "children": [],
-        "edge_cases": [
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:units=20-30"
-          },
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:bytes=ab-19"
-          },
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:bytes=-10--19"
-          },
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:bytes=10--19"
-          },
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:bytes=-10-"
-          },
-          {
-            "result": 1,
-            "api": "6681ac2f62509cfc220d78751b8dc524:bytes==10-19"
-          },
-          {
-            "result": 1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5200-19"
-          },
-          {
-            "result": 1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=59-50"
-          },
-          {
-            "result": 1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5385-5382"
-          },
-          {
-            "result": -1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5387-5391"
-          },
-          {
-            "result": -1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5386-5387"
-          },
-          {
-            "result": -1,
-            "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=9999-99999"
-          }
-        ],
-        "name": "test_sequence_range_errors",
-        "text": "server is not correctly throwing errors for range error cases. Check http://compliancedoc.readthedocs.io/en/latest/GET_sequence_API/errors/#error-conditions-while-using-range-header",
-        "parents": [
-          "test_sequence_range"
-        ],
-        "result": -1,
-        "test_description": "Test to check if server passes all the edge cases related range error cases"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_sequence_invalid_checksum_404_error",
-        "text": "Server is correctly sending 404 on invalid checksum",
-        "parents": [
-          "test_sequence_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 404 using some garbage checksum and appropriate headers"
-      },
-      {
-        "warning": false,
-        "children": [],
-        "edge_cases": [],
-        "name": "test_sequence_invalid_encoding_415_error",
-        "text": "Server is correctly sending 415 on invalid encoding",
-        "parents": [
-          "test_sequence_implement"
-        ],
-        "result": 1,
-        "test_description": "Test to check if server returns 200 using I test sequence and garbage encoding in Accept header"
-      }
-    ],
-    "total_tests_skipped": 1,
-    "total_tests_failed": 0
-  }
-]
+[{
+  "total_tests_passed": 29,
+  "total_warnings": 0,
+  "test_results": [{
+    "warning": false,
+    "result": 1,
+    "text": "Info endpoint implemented by the server",
+    "children": ["test_info_implement_default", "test_info_circular", "test_info_algorithms", "test_info_subsequence", "test_info_api_version"],
+    "name": "test_info_implement",
+    "edge_cases": [],
+    "parents": ["test_base_algorithm"],
+    "test_description": "Test to check if info-endpoint returns 200 OK with appropriate headers"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Info endpoint implemented with default encoding",
+    "children": [],
+    "name": "test_info_implement_default",
+    "edge_cases": [],
+    "parents": ["test_info_implement"],
+    "test_description": "Test to check if info-endpoint returns 200 OK without headers"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "circular key in info response object",
+    "children": ["test_metadata_query_circular_sequence", "test_sequence_circular", "test_sequence_circular_support_false_errors", "test_sequence_circular_support_true_errors"],
+    "name": "test_info_circular",
+    "edge_cases": [],
+    "parents": ["test_info_implement"],
+    "test_description": "Test to check if info-endpoint has circular in the response object. And if it is there it updates session_params['circular'] as per the value"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Circular sequence metadata can be retrieved",
+    "children": [],
+    "name": "test_metadata_query_circular_sequence",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement", "test_info_circular"],
+    "test_description": "Test if metadata endpoint returns 200 using circular test sequence if the server supports circular sequences. Value stored in session_params. If not skip test and set skip text appropriately"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Circular sequence can be retrieved successfully passing all the edge cases",
+    "children": [],
+    "name": "test_sequence_circular",
+    "edge_cases": [{
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5374&end=5:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5374&end=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196?start=5380&end=25:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }],
+    "parents": ["test_sequence_implement", "test_info_circular"],
+    "test_description": "Test to check if server passes all the edge cases related to circular queries"
+  }, {
+    "warning": false,
+    "result": 0,
+    "text": "test_sequence_circular_support_false_errors is skipped because server supports circular sequences",
+    "children": [],
+    "name": "test_sequence_circular_support_false_errors",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement", "test_info_circular"],
+    "test_description": "Test to check if server throws correct error codes on circular sequence query if server does not support circular sequences"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server is correctly throwing for error cases of circular sequences when server supports circular sequences",
+    "children": [],
+    "name": "test_sequence_circular_support_true_errors",
+    "edge_cases": [{
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=220218&end=671"
+    }],
+    "parents": ["test_sequence_implement", "test_info_circular"],
+    "test_description": "Test to check if server throws correct error codes on circular sequence query if server supports circular sequences"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "algorithms key in info response object",
+    "children": ["test_metadata_query_by_trunc512", "test_metadata_trunc512", "test_sequence_query_by_trunc512"],
+    "name": "test_info_algorithms",
+    "edge_cases": [],
+    "parents": ["test_info_implement"],
+    "test_description": "Test to check if info-endpoint has algorithms in the response object. And if it is there it updates session_params['trunc512'] as per the value"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "TRUNC512 algorithm is working in the server for metadata endpoint",
+    "children": [],
+    "name": "test_metadata_query_by_trunc512",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement", "test_info_algorithms"],
+    "test_description": "Test if metadata endpoint returns 200 using trunc512 with I test sequence if the server supports. Value stored in session_params. If not skip test and set skip text appropriately"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "trunc512 key in metadata response object",
+    "children": [],
+    "name": "test_metadata_trunc512",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement", "test_info_algorithms"],
+    "test_description": "Test if trunc512 in metadata response object. Skip if server does not support trunc512"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "TRUNC512 algorithm is working in the server for sequence endpoint",
+    "children": [],
+    "name": "test_sequence_query_by_trunc512",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement", "test_info_algorithms"],
+    "test_description": "Test to check if server returns 200 using I test sequence trunc512 and appropriate headers if the server supports trunc512"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "subsequence_limit key in info response object",
+    "children": [],
+    "name": "test_info_subsequence",
+    "edge_cases": [],
+    "parents": ["test_info_implement"],
+    "test_description": "Test to check if info-endpoint has subsequence_limit in the response object. If the key is present we update session_params['subsequence_limit'] as per the value"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "supported_api_versions key in info response object",
+    "children": [],
+    "name": "test_info_api_version",
+    "edge_cases": [],
+    "parents": ["test_info_implement"],
+    "test_description": "Test to check if info-endpoint has supported_api_versions in the response object."
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Metadata endpoint implemented by the server",
+    "children": ["test_metadata_implement_default", "test_metadata_query_by_trunc512", "test_metadata_query_circular_sequence", "test_metadata_md5", "test_metadata_trunc512", "test_metadata_length", "test_metadata_aliases", "test_metadata_invalid_checksum_404_error", "test_metadata_invalid_encoding_415_error"],
+    "name": "test_metadata_implement",
+    "edge_cases": [],
+    "parents": ["test_base_algorithm"],
+    "test_description": "Test if metadata endpoint returns 200 with appropriate headers using I test sequence"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Metadata endpoint implemented with default encoding",
+    "children": [],
+    "name": "test_metadata_implement_default",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if metadata endpoint returns 200 without headers using I test sequence"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "md5 key in metadata response object",
+    "children": [],
+    "name": "test_metadata_md5",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if md5 in metadata response object"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "length key in metadata response object",
+    "children": [],
+    "name": "test_metadata_length",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if length in metadata response object"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "aliases key in metadata response object",
+    "children": [],
+    "name": "test_metadata_aliases",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if aliases in metadata response object"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server is correctly sending 404 on invalid checksum",
+    "children": [],
+    "name": "test_metadata_invalid_checksum_404_error",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if 404 on invalid checksum in metadata response"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server is correctly sending 415 on invalid encoding",
+    "children": [],
+    "name": "test_metadata_invalid_encoding_415_error",
+    "edge_cases": [],
+    "parents": ["test_metadata_implement"],
+    "test_description": "Test if 415 on invalid encoding in Accept header"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Sequence endpoint implemented in the server",
+    "children": ["test_sequence_implement_default", "test_sequence_start_end", "test_sequence_range", "test_sequence_query_by_trunc512", "test_sequence_invalid_checksum_404_error", "test_sequence_invalid_encoding_415_error", "test_sequence_circular", "test_sequence_circular_support_false_errors", "test_sequence_circular_support_true_errors"],
+    "name": "test_sequence_implement",
+    "edge_cases": [],
+    "parents": ["test_base_algorithm"],
+    "test_description": "Test to check if server returns 200 using I test sequence and appropriate headers"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Sequence endpoint implemented with default encoding",
+    "children": [],
+    "name": "test_sequence_implement_default",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement"],
+    "test_description": "Test to check if server returns 200 using I test sequence and no headers"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server supports start end query params",
+    "children": ["test_sequence_start_end_success_cases", "test_sequence_start_end_errors"],
+    "name": "test_sequence_start_end",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement"],
+    "test_description": "Test to check if server returns 200 and appropriate text using I test sequence and start/end query params set to 10 and 20 respectively"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server passed all the success edge cases with start end query params",
+    "children": [],
+    "name": "test_sequence_start_end_success_cases",
+    "edge_cases": [{
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=10:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=20:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=10&end=11:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230208:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?end=5:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230217&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=0&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=1&end=230218:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?end=0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }],
+    "parents": ["test_sequence_start_end"],
+    "test_description": "Test to check if server passes all the edge cases related to success queries using start/end params"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "server is correctly throwing errors for start-end error cases",
+    "children": [],
+    "name": "test_sequence_start_end_errors",
+    "edge_cases": [{
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=abc&end=20"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=-10&end=-29"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:?start=abc"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=67&end=5387"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5375"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5386"
+    }, {
+      "result": 1,
+      "api": "sequence/3332ed720ac7eaa9b3655c06f6b9e196:?start=5386&end=5"
+    }],
+    "parents": ["test_sequence_start_end"],
+    "test_description": "Test to check if server passes all the edge cases related start-end error cases"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server supports range header",
+    "children": ["test_sequence_range_success_cases", "test_sequence_range_errors"],
+    "name": "test_sequence_range",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement"],
+    "test_description": "Test to check if server returns 200 and appropriate text using I test sequence and range header set to 10 and 19 respectively"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server passed all the success edge cases with range header query",
+    "children": [],
+    "name": "test_sequence_range_success_cases",
+    "edge_cases": [{
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-19:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=10-999999:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-999999:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=0-0:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }, {
+      "result": 1,
+      "api": "sequence/6681ac2f62509cfc220d78751b8dc524:bytes=230217-230217:{'Accept': 'text/vnd.ga4gh.refget.v1.0.0+plain'}"
+    }],
+    "parents": ["test_sequence_range"],
+    "test_description": "Test to check if server passes all the edge cases related to range header success queries"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "server is correctly throwing errors for range error cases",
+    "children": [],
+    "name": "test_sequence_range_errors",
+    "edge_cases": [{
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:units=20-30"
+    }, {
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:bytes=ab-19"
+    }, {
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:bytes=-10--19"
+    }, {
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:bytes=10--19"
+    }, {
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:bytes=-10-"
+    }, {
+      "result": 1,
+      "api": "6681ac2f62509cfc220d78751b8dc524:bytes==10-19"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5200-19"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=59-50"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5385-5382"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5387-5391"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=5386-5387"
+    }, {
+      "result": 1,
+      "api": "3332ed720ac7eaa9b3655c06f6b9e196:bytes=9999-99999"
+    }],
+    "parents": ["test_sequence_range"],
+    "test_description": "Test to check if server passes all the edge cases related range error cases"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server is correctly sending 404 on invalid checksum",
+    "children": [],
+    "name": "test_sequence_invalid_checksum_404_error",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement"],
+    "test_description": "Test to check if server returns 404 using some garbage checksum and appropriate headers"
+  }, {
+    "warning": false,
+    "result": 1,
+    "text": "Server is correctly sending 415 on invalid encoding",
+    "children": [],
+    "name": "test_sequence_invalid_encoding_415_error",
+    "edge_cases": [],
+    "parents": ["test_sequence_implement"],
+    "test_description": "Test to check if server returns 200 using I test sequence and garbage encoding in Accept header"
+  }],
+  "total_tests_skipped": 1,
+  "total_tests": 30,
+  "server": "https://refget.herokuapp.com/",
+  "date_time": "2018-09-24 17:55:13.547045",
+  "high_level_summary": {
+    "test_info_implement": {
+      "result": 1,
+      "name": "test_info_implement"
+    },
+    "test_metadata_implement": {
+      "result": 1,
+      "name": "test_metadata_implement"
+    },
+    "test_sequence_range": {
+      "result": 1,
+      "name": "test_sequence_range"
+    },
+    "test_sequence_implement": {
+      "result": 1,
+      "name": "test_sequence_implement"
+    }
+  },
+  "total_tests_failed": 0
+}]

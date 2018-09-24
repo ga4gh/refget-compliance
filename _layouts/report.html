@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign meta=site.data.servers[page.server] %}
 {% assign results=site.data[page.server][0] %}
-
+<a href='{{site.baseurl}}/'>Back to results</a>
 <h2>Test Details</h2>
 <dl>
   <dt>Server</dt><dd><a href='{{results.server}}'>{{results.server}}</a></dd>
@@ -24,53 +24,31 @@ layout: default
         <th>Result</th>
         <th>Description</th>
         <th>Response</th>
-        <th>Edge Cases</th>
       </tr>
     </thead>
     <tbody>
   {% for test in results.test_results %}
     {% if test.parents contains description[0] %}
+      {% assign lookup=site.data.result[test.result] %}
       <tr>
-        <td>{{test.result}}</td>
-        <td>{{test.test_description}}</td>
-        <td>{{test.text}}</td>
-      {% if test.edge_cases.size > 0 %}
-        <td><dl>
-        {% for edge in test.edge_cases %}
-          <dt>Result: {{edge.result}}</dt>
-          <dd>API call: <code>{{edge.api}}</code></dd>
-        {% endfor %}
-        </dl>
+        <td style="width: 10%"><span class='label {{lookup.class}}'>{{lookup.text}}</span></td>
+        <td style="width: 30%">{{test.test_description}}</td>
+        <td style="width: 60%">
+          {{test.text}}
+          {% if test.edge_cases.size > 0 %}
+          <br/>
+          <dl>
+            {% for edge in test.edge_cases %}
+              {% assign edge_case_lookup=site.data.result[edge.result] %}
+              <dt><span class='label {{edge_case_lookup.class}}'>{{edge_case_lookup.text}}</span></dt>
+              <dd>API call: <code>{{edge.api}}</code></dd>
+            {% endfor %}
+          </dl>
+          {% endif %}
         </td>
-      {% else %}
-        <td>-</td>
-      {% endif %}
       </tr>
     {% endif %}
   {% endfor %}
     </tbody>
   </table>
 {% endfor %}
-
-<!-- <h2>Test Results</h2>
-{% for description in site.data.descriptions %}
-  <hr/>
-  <h3>{{description[1]}}</h3>
-  {% for test in results.test_results %}
-    {% if test.parents contains description[0] %}
-      <h4>{{test.test_description}}</h4>
-      <dl><dt>Result</dt><dd>{{test.result}}</dd>
-      <dl><dt>Response</dt><dd>{{test.text}}</dd>
-      {% if test.edge_cases.size > 0 %}
-        <dl>Edge cases</dl>
-        <dd><dl>
-        {% for edge in test.edge_cases %}
-          <dt>Result: {{edge.result}}</dt>
-          <dd>API call: <code>{{edge.api}}</code></dd>
-        {% endfor %}
-        </dl>
-        </dd>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-{% endfor %} -->

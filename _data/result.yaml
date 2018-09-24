@@ -1,0 +1,9 @@
+1:
+  class: 'success'
+  text: 'Pass'
+0:
+  class: 'warning'
+  text: 'Warn'
+-1:
+  class: 'error'
+  text: 'Fail'
