@@ -1,4 +1,12 @@
-test_info_implement: Service info
-test_metadata_implement: Metadata
-test_sequence_implement: Sequence
-test_sequence_range: Sequence range
+test_info_implement:
+  title: Service info
+  id: service-info
+test_metadata_implement:
+  title: Metadata
+  id: metadata
+test_sequence_implement:
+  title: Sequence
+  id: sequence
+test_sequence_range:
+  title: Sequence range
+  id: sequence-range

@@ -9,7 +9,7 @@ title: Refget Compliance Report
   <tr>
     <th>Server</th>
     {% for description in site.data.descriptions %}
-      <th>{{ description[1] }}</th>
+      <th>{{ description[1].title }}</th>
     {% endfor %}
   </tr>
   </thead>
@@ -24,7 +24,8 @@ title: Refget Compliance Report
           {% assign testname = description[0] %}
           {% assign summary=results.high_level_summary[testname] %}
           {% assign lookup=site.data.result[summary.result] %}
-          <td><span class='label {{lookup.class}}'>{{lookup.text}}</span></td>
+          {% assign href= "#" | append: description[1].id %}
+          <td><span class='label {{lookup.class}}'><a href='{{ site.baseurl | append: report_link | append: href  }}'>{{lookup.text}}</a></span></td>
         {% endfor %}
     </tr>
     {% endfor %}
