@@ -2,7 +2,7 @@ language: python
 python:
 - '3.6'
 install:
-- pip install --user refget-compliance
+- pip install refget-compliance
 script:
 - run-tests.sh
 env:
