@@ -4,7 +4,7 @@ python:
 install:
 - pip install refget-compliance
 script:
-- run-tests.sh
+- ./run-tests.sh
 env:
   global:
   - GIT_NAME='travis-tester'
