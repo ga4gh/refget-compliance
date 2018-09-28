@@ -21,7 +21,7 @@ function run_test {
   local report=$2
 
   echo "Processing server $server"
-  refget-compliance report --server $s --no-web --json _data/${report}.json
+  refget-compliance report --server $s --no-web --json_path _data/${report}.json
 }
 
 setup_repo
