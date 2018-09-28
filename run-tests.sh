@@ -27,7 +27,7 @@ function run_test {
 setup_repo
 
 run_test "https://refget.herokuapp.com/" "refget-server-perl"
-# run_test "https://www.ebi.ac.uk/ena/cram/" "ena-server"
+run_test "https://www.ebi.ac.uk/ena/cram/" "ena-server"
 
 git add .
 git commit -m 'Adding test results'
