@@ -7,7 +7,6 @@ function setup_repo {
   git config user.name $GIT_NAME
   git config user.email $GIT_EMAIL
   git config credential.helper "store --file=.git/credentials"
-  echo "https://${GH_TOKEN}:x-oauth-basic@github.com" > .git/credentials
   git branch $DEPLOY_BRANCH origin/${DEPLOY_BRANCH}
   git checkout $DEPLOY_BRANCH
 }

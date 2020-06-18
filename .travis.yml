@@ -10,5 +10,4 @@ env:
   - GIT_NAME='travis-tester'
   - GIT_EMAIL='travis@travis-ci.org'
   - DEPLOY_BRANCH=gh-pages
-  - REPO=https://github.com/andrewyatz/refget-compliance
-  - secure: gdOmnKaFfJfBaX7EVWDbYuiJE3FE6m9qHLaRkq9lbDWqI6yTK+rEe6yJKdIVKsdBk3qup0txkJi9xW7od5tfdbEhceEapl2P1lADU2mkVWR0UWzAx2ttBJYc/B5pU0v1NLIhgtGQJxEhm/FPL2qK7tFCkO/iH+/bY/t9Wr/McyS+/xkePOS/jH6rvMR0YNLjyjhFe/kAIAr998RBWS6JT82IFCBj5IRnnGIewXlNUlaTX1gw/5byCUeHGVU2y96QP63V7ZTCK8B5A0S+KSviIXTqvqYalt6FkfZAOeHldr26JwY79OXgwIf1s1VwaRk/Tq3ESGXOtcZqD3JyPtFlqArbHGF+907aZaM8unMQP0ZW0FSDuXCgnEiB2PJtPaQPs7UgscjOJ87N9SOb/pmBSroOmibpgbUyO8vtZE0J9xwJl+U1KiLI+NPfAp49nASJhNOSlcLFJIgII1BcNZiAOjFQY28fDicIWEEAMspSs2mLXxHv/YI9xSScAl0uPnZj/rH+/4/vzyJU7rsTZgisynjnKvHoPoipitX+rcLe23l3G2PUo32irr5mqd8k2PYgPdeLDxNLevCvGmO6HNhTQ9opguQcMngzL5VyQ7/CGrFsLmtk0rRcZZrtKgr34g8E8v/mw2mhBOGX5bAyzPPwT4U6uD7CuK0l5WZy6mHRK2Y=
+  - REPO=https://github.com/ga4gh/refget-compliance
