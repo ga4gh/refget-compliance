@@ -1,14 +1,16 @@
 #!/bin/bash
 
+GITHUB_URL="https://github.com/${GH_ORG}/${GH_REPO}.git"
+
 function setup_repo {
-  git remote set-url --push origin $REPO
-  git remote set-branches --add origin $DEPLOY_BRANCH
+  git remote set-url origin https://github.com/ga4gh/refget-compliance.git
+  git remote set-branches --add origin $GH_BRANCH
   git fetch -q
-  git config user.name $GIT_NAME
-  git config user.email $GIT_EMAIL
-  git config credential.helper "store --file=.git/credentials"
-  git branch $DEPLOY_BRANCH origin/${DEPLOY_BRANCH}
-  git checkout $DEPLOY_BRANCH
+  git config user.name $GH_NAME
+  git config user.email $GH_EMAIL
+  # git config credential.helper "store --file=.git/credentials"
+  git branch $GH_BRANCH origin/${GH_BRANCH}
+  git checkout $GH_BRANCH
 }
 
 function cleanup {
@@ -30,7 +32,8 @@ run_test "https://www.ebi.ac.uk/ena/cram/" "ena-server"
 
 git add .
 git commit -m 'Adding test results'
-git push origin $DEPLOY_BRANCH
+# git push origin $DEPLOY_BRANCH
+git push https://${GH_TOKEN}@github.com/${GH_NAME}/${GH_ORG}/${GH_REPO}
 
 cleanup
 
