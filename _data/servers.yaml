@@ -8,3 +8,6 @@ ena-server:
 insdc-aws-fargate:
   name: INSDC Refget on AWS Fargate
   site: https://refget-insdc.jeremy-codes.com/
+insdc-aws-serverless:
+  name: INSDC Refget on AWS Serverless
+  site: https://spjb6ejone.execute-api.us-east-2.amazonaws.com/Prod/
