@@ -5,11 +5,11 @@ install:
 - pip install refget-compliance
 script:
 - travis_wait 40 ./run-tests.sh
-secure: "qiBpoVuGhPTCfzLQbx7vh1uDmnKC9xlKtef7fPqQNh/uaXjyCoOuubYQPZHVB8eKTUpx3sfvIDjUxBNiKfz6Qgs6n/uSvzk/YBfHdjjle1PXeiLsbvEx1Xw6gst99C2juz6rdWPUBOvsyyBnPiAzCvX4JKFYy4XlAUITRQeIVWGFVQRtXgHYA98sJ/m7XdgkQ1Enzcz3Re7213MyN66N8AEuTMWlYZKWcuNirfFVsq26Ia21D7NH7DmS5OLUtWS92/CiBe1c+aLsag0eW9lagXfRBBFa01wBVxUW7FAKem4lUYsr9jZPn9N3SHmHGafcYIer+KOw3ou2iBKZdm57fWDiA60GWTiAJx2V3Yzbg3kqyYPm/lD9iqXqhiox7qkwF9kYK1CsYNjxtKmKOKsEwaYKh0R3mwVZgLs5vLApKG69wcXhZw5JCTdoNKdIrBJi7dEwTT2pMEBwu2gpvt/y0/arhvuWi5bhKbx8fca1oyHWXYgVW5ovzqjacF/s0N8ALfaQBGkGqFrECnXAowlhqo7OXxM2WzYdQkb2a2CiqGSSKvBcj9XKJsJoyBMK/6tlC353aeXrUQIqtuZfgg6fpb2Zda6EZvUWl6us6ERR7bzMud8QsDev4FVcpZdd3rP/Vv1C4NJQnRW6Yb4FH8Oreqif2zT86D8cgrectqg0Ams="
 env:
   global:
-  - GH_NAME='ga4gh-bot'
-  - GH_EMAIL='ga4ghdev@gmail.com'
-  - GH_ORG=ga4gh
-  - GH_REPO=refget-compliance
-  - GH_BRANCH=gh-pages
+    - GH_NAME='ga4gh-bot'
+    - GH_EMAIL='ga4ghdev@gmail.com'
+    - GH_ORG=ga4gh
+    - GH_REPO=refget-compliance
+    - GH_BRANCH=gh-pages
+    - secure: "qiBpoVuGhPTCfzLQbx7vh1uDmnKC9xlKtef7fPqQNh/uaXjyCoOuubYQPZHVB8eKTUpx3sfvIDjUxBNiKfz6Qgs6n/uSvzk/YBfHdjjle1PXeiLsbvEx1Xw6gst99C2juz6rdWPUBOvsyyBnPiAzCvX4JKFYy4XlAUITRQeIVWGFVQRtXgHYA98sJ/m7XdgkQ1Enzcz3Re7213MyN66N8AEuTMWlYZKWcuNirfFVsq26Ia21D7NH7DmS5OLUtWS92/CiBe1c+aLsag0eW9lagXfRBBFa01wBVxUW7FAKem4lUYsr9jZPn9N3SHmHGafcYIer+KOw3ou2iBKZdm57fWDiA60GWTiAJx2V3Yzbg3kqyYPm/lD9iqXqhiox7qkwF9kYK1CsYNjxtKmKOKsEwaYKh0R3mwVZgLs5vLApKG69wcXhZw5JCTdoNKdIrBJi7dEwTT2pMEBwu2gpvt/y0/arhvuWi5bhKbx8fca1oyHWXYgVW5ovzqjacF/s0N8ALfaQBGkGqFrECnXAowlhqo7OXxM2WzYdQkb2a2CiqGSSKvBcj9XKJsJoyBMK/6tlC353aeXrUQIqtuZfgg6fpb2Zda6EZvUWl6us6ERR7bzMud8QsDev4FVcpZdd3rP/Vv1C4NJQnRW6Yb4FH8Oreqif2zT86D8cgrectqg0Ams="
