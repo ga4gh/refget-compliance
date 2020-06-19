@@ -30,6 +30,7 @@ setup_repo
 
 run_test "https://refget.herokuapp.com/" "refget-server-perl"
 run_test "https://www.ebi.ac.uk/ena/cram/" "ena-server"
+run_test "https://refget-insdc.jeremy-codes.com/" "insdc-aws-fargate"
 
 git add .
 git commit -m 'Adding test results'
