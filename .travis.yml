@@ -4,7 +4,7 @@ python:
 install:
 - pip install refget-compliance
 script:
-- travis_wait 40 ./run-tests.sh
+- ./run-tests.sh
 env:
   global:
     - GH_NAME='ga4gh-bot'
