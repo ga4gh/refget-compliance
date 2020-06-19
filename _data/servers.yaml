@@ -5,3 +5,6 @@ refget-server-perl:
 ena-server:
   name: CRAM Reference Registry
   site: https://www.ebi.ac.uk/ena/cram
+insdc-aws-fargate:
+  name: INSDC Refget on AWS Fargate
+  site: https://refget-insdc.jeremy-codes.com/
